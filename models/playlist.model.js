@@ -5,10 +5,8 @@ let Playlist = new Schema({
     playlists: [{
         idPlaylist: { type: mongoose.Types.ObjectId },
         namePlaylist: {type: String},
-        songs: [{
-            idSong: {type: mongoose.Types.ObjectId, ref: "song"}
-        }]
-    }]  
+        songs: [{type: mongoose.Types.ObjectId, ref: "song"}]
+    }]
 })
 
 module.exports = mongoose.model('playlists', Playlist);

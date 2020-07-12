@@ -3,9 +3,9 @@ const router = express.Router();
 const song = require('../controllers/song.controller');
 
 const apiSong = (req, res) => {
-    router.post('/create-song', song.createSong);
-    //router.get('deleteSong');
-    //router.get('editSong');
+    router.post('/create', song.createSong);
+    router.post('/remove', song.deleteSong);
+    router.post('/edit',song.editSong);
     return router;
 
 }

@@ -12,16 +12,15 @@ const signUp = (passport) => {
             },
             (req, username, password, done) => {
                 const createAccount = () => {
-                    //console.log('Username'+username);
+                    console.log('Username'+username);
                     User.findOne({ username: username }, (err, user) => {
                         if (err) {
                             console.log(err);
-                            return done(err);
+                            return done(err, false);
                         }
                         if (user) {
-                            return done(null, false);
-                        } else {
-                            //console.log(req);
+                            return done({status: 0}, false);
+                        } else{ 
                             let userInfo = new User();
                             userInfo.username = username;
                             userInfo.fullname = req.body.fullname;
@@ -29,11 +28,10 @@ const signUp = (passport) => {
                             userInfo.password = createHash(password);
                             userInfo.save((err) => {
                                 if (err) {
-                                    console.log(err.message);
+                                    console.log(err.message);   
                                     throw err;
                                 }
-                                //console.log("yeeeeeeeeeee")
-                                return done(null, userInfo);
+                                return done({status: 1}, userInfo);
                             })
                         }
                     })

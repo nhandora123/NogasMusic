@@ -17,17 +17,14 @@ const apiCredential = (passport) => {
         if (req.isAuthenticated()) {
             return next();
         }
-        res.json({
-            status: 0,
-            message: 'Or you have to sign out before then you can sign out!'
-        })
+        res.json({ status: 0 });//message: 'Or you have to sign out before then you can sign out!'
     }
 
     router.post('/signIn', credential.signIn(passport));
     router.post('/signUp', isAuthenticated, credential.signUp(passport));
     router.get('/signOut', isAuthenticated2,(req, res) => {
         req.logout();
-        res.json({ status: 1 });
+        res.json({ status: 1 });//Sign Out success
     })
     return router;
 }

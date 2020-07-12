@@ -16,13 +16,14 @@ const signIn = (passport) => {
                     if (err) return done(err);
                     
                     if (!user) {
-                        return done(null, false)
+                        return done({status: 0}, false)
                     }
                     console.log(user);
 
                     if (!isValidPassword(user, password)) {
-                        return done(null, false);
+                        return done({status: -2}, false);
                     }
+                    console.log("afd")
                     return done(null, user);
                 })
             }

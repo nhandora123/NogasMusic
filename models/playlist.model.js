@@ -5,7 +5,7 @@ let Playlist = new Schema({
     playlists: [{
         idPlaylist: { type: mongoose.Types.ObjectId },
         namePlaylist: {type: String},
-        songs: [{type: mongoose.Types.ObjectId, ref: "song"}]
+        songs: [{type: mongoose.Types.ObjectId, ref: "songs"}]
     }]
 })
 

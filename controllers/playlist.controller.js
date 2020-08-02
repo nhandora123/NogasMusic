@@ -101,8 +101,8 @@ const removePlaylist = async (req, res) => {
                 }, {
                         '$pull': { 'playlists': { _id: idPlaylist }}
                 });
-                isExistIdPlaylist = await Playlist.findOne(username);
-                return res.status(401).json({ status: 1, dataPlaylist: isExistIdPlaylist });
+                var newPlaylist1 = await Playlist.findOne({username: username});
+                return res.status(401).json({ status: 1, dataPlaylist: newPlaylist1 });
 
             } else {
                 return res.status(401).json({ status: 0 });
